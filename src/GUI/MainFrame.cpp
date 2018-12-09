@@ -142,9 +142,29 @@ void MainFrame::init_menubar()
 
     wxMenu* menuSettings = new wxMenu();
     {
+	append_menu_item(menuSettings, _("Print Settings..."), _("Print Settings..."), 
+                [this](wxCommandEvent& e) { this->plater->print_settings(); }, wxID_ANY, "cog.png", "Ctrl+1");
+	append_menu_item(menuSettings, _("Filament Settings..."), _("Filament Settings..."), 
+                [this](wxCommandEvent& e) { this->plater->print_settings(); }, wxID_ANY, "spool.png", "Ctrl+2");
+
     }
     wxMenu* menuView = new wxMenu();
     {
+	append_menu_item(menuView, _("Top"), _("view direction down"), 
+                [this](wxCommandEvent& e) { this->plater->view(View::Top); }, wxID_ANY, "", "Ctrl+4");
+	append_menu_item(menuView, _("Bottom"), _("view direction up"), 
+                [this](wxCommandEvent& e) { this->plater->view(View::Bottom); }, wxID_ANY, "","Ctrl+5");
+	append_menu_item(menuView, _("Left"), _("view direction right"), 
+                [this](wxCommandEvent& e) { this->plater->view(View::Left); }, wxID_ANY, "", "Ctrl+6");
+	append_menu_item(menuView, _("Right"), _("view direction left"), 
+                [this](wxCommandEvent& e) { this->plater->view(View::Right); }, wxID_ANY, "","Ctrl+7");
+	append_menu_item(menuView, _("Front"), _("view direction back"), 
+                [this](wxCommandEvent& e) { this->plater->view(View::Front); }, wxID_ANY, "", "Ctrl+8");
+	append_menu_item(menuView, _("Back"), _("view direction front"), 
+                [this](wxCommandEvent& e) { this->plater->view(View::Back); }, wxID_ANY, "","Ctrl+9");
+	append_menu_item(menuView, _("Diagonal"), _("view direction diagonal"), 
+                [this](wxCommandEvent& e) { this->plater->view(View::Diagonal); }, wxID_ANY, "","Ctrl+9");
+        menuPlater->AppendSeparator();
     }
     wxMenu* menuWindow = new wxMenu();
     {

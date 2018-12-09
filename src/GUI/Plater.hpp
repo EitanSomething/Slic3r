@@ -45,6 +45,9 @@ enum class UndoCmd {
 enum class Zoom {
     In, Out
 };
+enum class View {
+    Top, Bottom, Left, Right , Front , Back , Diagonal
+};
 
 using ObjIdx = unsigned int;
 using ObjRef = std::vector<PlaterObject>::iterator;
@@ -104,7 +107,7 @@ public:
     /// Retrieve the identifier for the currently selected preset.
     void undo() {};
     void redo() {};
-
+	
     void select_next() {};
     void select_prev() {};
     void zoom(Zoom dir) {};
@@ -113,10 +116,12 @@ public:
     void export_amf() {};
     void export_tmf() {};
     void export_stl() {};
-
-
+    void print_settings() {};
+    void view(View dir);	
     void show_preset_editor(preset_t preset, unsigned int idx);
+
 private:
+
     std::shared_ptr<Slic3r::Print> print {std::make_shared<Print>(Slic3r::Print())};
     std::shared_ptr<Slic3r::Model> model {std::make_shared<Model>(Slic3r::Model())};
 

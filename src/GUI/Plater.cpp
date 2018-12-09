@@ -242,6 +242,25 @@ Plater::Plater(wxWindow* parent, const wxString& title) :
     this->selection_changed();
 
 }
+void Plater::view(View e) {
+	switch(e){
+		case View::Top: 
+		break;
+		case View::Bottom: 
+		break;
+		case View::Left: 
+		break;
+		case View::Right: 
+		break;
+		case View::Front: 
+		break;
+		case View::Back: 
+		break;
+		case View::Diagonal: 
+		break;
+	}	
+
+}
 void Plater::add() {
     Log::info(LogChannel, L"Called Add function");
 
